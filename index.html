@@ -1,19 +1,664 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <title>我的网站标题</title>
-  <!-- 其他 head 内容 -->
-  
-  <!-- ===== 从这里开始添加 Dify 代码 ===== -->
-<iframe
- src="https://udify.app/chatbot/zTN8bH2AZPdrGTpk"
- style="width: 100%; height: 100%; min-height: 700px"
- frameborder="0"
- allow="microphone">
-</iframe>
-  <!-- ===== Dify 代码结束 ===== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XX大药房 - 您的健康守护者</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --secondary: #f5f5f5;
+      --accent: #ff9800;
+      --text: #333;
+      --light-text: #f8f8f8;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    body {
+      background-color: #f9fbf8;
+      color: var(--text);
+      line-height: 1.6;
+      background-image: linear-gradient(to bottom, rgba(46, 125, 50, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: var(--light-text);
+      padding: 15px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    
+    .logo-text span {
+      font-weight: 300;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .phone {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      color: var(--light-text);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: #e68a00;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      margin-left: 15px;
+    }
+    
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+    }
+    
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    /* Products Section */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .product-image {
+      height: 200px;
+      background-color: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .product-image i {
+      font-size: 4rem;
+      color: var(--primary);
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-category {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .product-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .product-price {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    
+    /* Chat Section */
+    .chat-section {
+      background-color: #e8f5e9;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      box-shadow: var(--shadow);
+    }
+    
+    .chat-header {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .chat-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    
+    .chat-container {
+      padding: 30px;
+      background-color: white;
+    }
+    
+    /* Health Tips Section */
+    .health-tips {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    
+    .tip-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+    }
+    
+    .tip-icon {
+      background-color: var(--primary);
+      color: white;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    
+    .tip-content {
+      padding: 20px;
+      flex: 1;
+    }
+    
+    .tip-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: var(--light-text);
+      padding: 40px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn-outline {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- 你的网站内容 -->
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-clinic-medical"></i>
+        </div>
+        <div class="logo-text">XX<span>大药房</span></div>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="#"><i class="fas fa-home"></i> 首页</a></li>
+          <li><a href="#"><i class="fas fa-pills"></i> 药品分类</a></li>
+          <li><a href="#"><i class="fas fa-heartbeat"></i> 健康资讯</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> 门店地址</a></li>
+          <li><a href="#"><i class="fas fa-phone-alt"></i> 联系我们</a></li>
+        </ul>
+      </nav>
+      
+      <div class="contact-info">
+        <div class="phone">
+          <i class="fas fa-phone"></i> 400-123-4567
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>您的健康，我们的责任</h1>
+      <p>专业药剂师团队，提供优质药品与健康咨询服务</p>
+      <div class="btn-container">
+        <a href="#" class="btn">在线咨询</a>
+        <a href="#" class="btn btn-outline">查看药品</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-prescription-bottle-alt"></i>
+        </div>
+        <h3>正品保障</h3>
+        <p>所有药品均来自正规渠道，100%正品保障</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-truck"></i>
+        </div>
+        <h3>快速配送</h3>
+        <p>同城1小时送达，全城3小时配送</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <h3>专业药师</h3>
+        <p>执业药师在线提供专业用药指导</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h3>24小时咨询</h3>
+        <p>全天候在线解答您的健康问题</p>
+      </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section>
+      <div class="section-title">
+        <h2>热销药品</h2>
+      </div>
+      
+      <div class="products">
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-capsules"></i>
+          </div>
+          <div class="product-info">
+            <div class="product-category">感冒用药</div>
+            <h3 class="product-name">感冒灵颗粒</h3>
+            <div class="product-price">¥28.50</div>
+            <button class="btn">加入购物车</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-tablets"></i>
+          </div>
+          <div class="product-info">
+            <div class="product-category">肠胃用药</div>
+            <h3 class="product-name">健胃消食片</h3>
+            <div class="product-price">¥15.80</div>
+            <button class="btn">加入购物车</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-prescription-bottle"></i>
+          </div>
+          <div class="product-info">
+            <div class="product-category">维生素</div>
+            <h3 class="product-name">维生素C咀嚼片</h3>
+            <div class="product-price">¥42.00</div>
+            <button class="btn">加入购物车</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-cream"></i>
+          </div>
+          <div class="product-info">
+            <div class="product-category">皮肤用药</div>
+            <h3 class="product-name">皮炎平软膏</h3>
+            <div class="product-price">¥19.90</div>
+            <button class="btn">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Online Chat Section -->
+    <section class="chat-section">
+      <div class="chat-header">
+        <h3><i class="fas fa-comment-medical"></i> 在线药师咨询</h3>
+        <p>专业药师为您解答用药问题</p>
+      </div>
+      <div class="chat-container">
+        <!-- Dify Chatbot Integration -->
+        <iframe
+          src="https://udify.app/chatbot/zTN8bH2AZPdrGTpk"
+          style="width: 100%; height: 500px; border-radius: 10px; border: 1px solid #e0e0e0;"
+          frameborder="0"
+          allow="microphone">
+        </iframe>
+      </div>
+    </section>
+    
+    <!-- Health Tips Section -->
+    <section>
+      <div class="section-title">
+        <h2>健康小贴士</h2>
+      </div>
+      
+      <div class="health-tips">
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="tip-content">
+            <h3>心血管健康</h3>
+            <p>每天30分钟中等强度运动，多吃蔬菜水果，保持健康体重，有助于维护心血管健康。</p>
+          </div>
+        </div>
+        
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-apple-alt"></i>
+          </div>
+          <div class="tip-content">
+            <h3>合理膳食</h3>
+            <p>饮食多样化，控制油盐糖摄入，保证蛋白质充足，多吃全谷物和膳食纤维。</p>
+          </div>
+        </div>
+        
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-bed"></i>
+          </div>
+          <div class="tip-content">
+            <h3>良好睡眠</h3>
+            <p>成年人每天保证7-8小时高质量睡眠，保持固定作息时间，睡前避免使用电子设备。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>XX大药房成立于XXXX年，拥有XX年专业药品零售经验，致力于为顾客提供优质药品和健康服务。</p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i> 首页</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> 药品目录</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> 健康资讯</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> 门店查询</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>联系我们</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 广州市天河区广氮花园</li>
+            <li><i class="fas fa-phone"></i> 400-123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@kangjian.com</li>
+            <li><i class="fas fa-clock"></i> 营业时间：8:00-22:00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 XX大药房 版权所有 | 药品经营许可证：123456789</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
